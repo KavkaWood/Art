@@ -84,6 +84,9 @@
 	previousButton.addEventListener('click', function() { showImage(activeIndex - 1); });
 	nextButton.addEventListener('click', function() { showImage(activeIndex + 1); });
 	lightbox.addEventListener('click', function(event) {
+		// The lightbox lives directly under <body>. Keep its clicks from
+		// reaching the page-level handler that closes the current article.
+		event.stopPropagation();
 		if (event.target === lightbox)
 			closeGallery();
 	});
